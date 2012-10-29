@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:amq="http://activemq.apache.org/schema/core"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.0.xsd 
+ 						http://activemq.apache.org/schema/core http://activemq.apache.org/schema/core/activemq-core.xsd">
+
+	<amq:connectionFactory id="jmsConnectionFactory"
+		brokerURL="vm://localhost" />
+
+	<amq:queue id="yourDestination" physicalName="yourDestination" />
+	<amq:queue id="yourDestination2" physicalName="yourDestination" />
+
+	<bean id="jmsTemplate" class="org.springframework.jms.core.JmsTemplate">
+		<constructor-arg ref="jmsConnectionFactory" />
+	</bean>
+</beans>
